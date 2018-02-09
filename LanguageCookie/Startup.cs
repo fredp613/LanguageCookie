@@ -34,7 +34,7 @@ namespace LanguageCookie
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                //app.UseExceptionHandler("/Lang/Error");
             }
 
             app.UseStaticFiles();
@@ -43,7 +43,8 @@ namespace LanguageCookie
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Lang}/{action=Index}/{lang?}");
+             
             });
         }
     }

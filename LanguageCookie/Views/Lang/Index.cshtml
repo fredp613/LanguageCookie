@@ -1,0 +1,38 @@
+﻿
+
+<span id="lang">@ViewBag.Message</span>
+<span id="parentUrl"></span>
+
+<script>
+
+    window.addEventListener('message', function (event) {
+
+        // IMPORTANT: Check the origin of the data! 
+        if (event.origin.indexOf('portal-portail-test.justice.gc.ca')) {
+            // The data has been sent from your site 
+
+            // The data sent with postMessage is stored in event.data 
+            console.log(event.data);
+            document.getElementById("parentUrl").innerHTML = event.data;
+            var lang = document.getElementById("lang").innerHTML;
+            var parentLang = event.data.slice(-2) == "en" ? "eng" : "fra";
+            if (event.data.slice(-2) != "en" && event.data.slice(-2) != "fr") {
+                parent.window.location.href = document.getElementById("parentUrl").innerHTML + "?afAcceptLang=" + lang.slice(0, -1);
+                return;
+            } else { 
+               
+                if (parentLang != lang) {
+                    if (lang != "null") {
+                        parent.window.location.href = document.getElementById("parentUrl").innerHTML + parentLang.slice(0, -1);                        
+                    } 
+                   
+                }
+
+            }
+            
+        }
+       
+    }); 
+
+
+</script>
