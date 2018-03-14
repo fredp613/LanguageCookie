@@ -8,7 +8,7 @@
     window.addEventListener('message', function (event) {
 
         // IMPORTANT: Check the origin of the data! 
-        if (event.origin.indexOf('portal-portail-test.justice.gc.ca')) {
+        if (event.origin.indexOf('.justice.gc.ca')) {
             // The data has been sent from your site 
 
             // The data sent with postMessage is stored in event.data 
@@ -22,8 +22,9 @@
             } else { 
                
                 if (parentLang != lang) {
-                    if (lang != "null") {
-                        parent.window.location.href = document.getElementById("parentUrl").innerHTML + parentLang.slice(0, -1);                        
+                    if (lang != "null") {			
+                        parent.window.location.href = document.getElementById("parentUrl").innerHTML + parentLang.slice(0, -1);  
+			                     
                     } 
                    
                 }
